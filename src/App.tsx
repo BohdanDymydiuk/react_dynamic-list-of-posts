@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classNames from 'classnames';
 
 import 'bulma/css/bulma.css';
@@ -29,7 +30,7 @@ export const App = () => {
   // #endregion
   // #region handlers
 
-  const sectionOnCLickHandler = () => {
+  const sectionOnClickHandler = () => {
     if (isDdActive) {
       setIsDdActive(false);
     }
@@ -55,7 +56,7 @@ export const App = () => {
         .catch(() => setLoadingPostsError(true))
         .finally(() => setArePostsLoading(false));
     }
-  }, [currUser, loadingPostsError]);
+  }, [currUser]);
 
   useEffect(() => {
     if (userPosts.length === 0 && currUser) {
@@ -102,7 +103,7 @@ export const App = () => {
   // #endregion
 
   return (
-    <main className="section" onClick={sectionOnCLickHandler}>
+    <main className="section" onClick={sectionOnClickHandler}>
       <div className="container">
         <div className="tile is-ancestor">
           <div className="tile is-parent">
@@ -125,7 +126,7 @@ export const App = () => {
                 ) : (
                   (loadingPostsError && loadingPostsErrorMarkup) ||
                   (isNoPosts && noPostsMarkup) ||
-                  postsList
+                  (userPosts.length > 0 && postsList)
                 )}
               </div>
             </div>

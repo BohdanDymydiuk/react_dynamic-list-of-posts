@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Loader } from './Loader';
 import { NewCommentForm } from './NewCommentForm';
@@ -42,7 +43,7 @@ export const PostDetails: React.FC<Props> = React.memo(
         })
         .catch(() => setCommentsError(true))
         .finally(() => setAreCommLoading(false));
-    }, [commentsError, id]);
+    }, [id]);
 
     // #endregion
     // #region handlers
